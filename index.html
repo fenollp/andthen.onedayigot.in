@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="static/favicon.ico">
+    <title>▶ The Grid</title>
+    <style type="text/css">
+      body { background: black url('static/Jeff_Bridges-1.jpg') no-repeat center center fixed; }
+    </style>
+    <script type="text/javascript" src="static/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+        $(document).keydown(function(evt) {
+        /// Toggle playing with SPACE
+          dude = $('audio')[0];
+          if (evt.keyCode == 32)
+            dude.paused ? dude.play() : dude.pause();
+          $(dude).on("pause ended", function(){document.title = document.title.replace("\u25B6 ","")});
+          $(dude).on("play", function(){document.title = "\u25B6 " + document.title.replace("\u25B6 ","")});
+
+        /// Change volume with UP or DOWN
+          if (evt.keyCode == 38) // Up Arrow
+            dude.volume += 1/32;
+          if (evt.keyCode == 40) // Down Arrow
+            dude.volume -= 1/32;
+        });
+
+      });
+
+      // Source for picture: http://cdn.lightgalleries.net/4bd5ec07e7b2b/images/Jeff_Bridges-1.jpg
+      // More awesome version of audio: http://www.youtube.com/watch?v=-UOTLTgDH44
+    </script>
+  <style type="text/css"></style></head>
+  <body>
+    <audio autoplay="" loop="" src="static/UOTLTgDH44-128kbps.m4a"></audio>
+  </body>
+</html>
